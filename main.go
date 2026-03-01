@@ -40,4 +40,5 @@ func CountWords(text string) map[string]int {
 }
 func main() {
 	fmt.Println(CountWords("Go Go go!"))
+	fmt.Println("Hello WOrld")
 }
