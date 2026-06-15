@@ -28,12 +28,13 @@ func (r *CalcRepository) GetAllCalculations() ([]Calculation, error) {
 }
 func (r *CalcRepository) GetCalculationByID(id string) (Calculation, error) {
 	var calc Calculation
-	err := r.db.First(&calc, id).Error
+	err := r.db.First(&calc, "id = ?", id).Error
 	return calc, err
 }
+
 func (r *CalcRepository) UpdateCalculation(calc Calculation) error {
 	return r.db.Save(&calc).Error
 }
 func (r *CalcRepository) DeleteCalculation(id string) error {
-	return r.db.Delete(&Calculation{}, id).Error
+	return r.db.Delete(&Calculation{}, "id = ?", id).Error
 }
